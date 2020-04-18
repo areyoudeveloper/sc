@@ -3,7 +3,8 @@
 export PATH=$PATH:~/bin/:/usr/bin
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
-export ZIPNAME=GoGreen-Leaf
+export TIME=$(date +"%S-%F")
+export ZIPNAME=GoGreen-Leaf-Q-${TIME}
 sudo ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
@@ -84,9 +85,16 @@ make mrproper
 mkdir -p out
 make O=out rolex_defconfig
 make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/log.txt
-
+curl -F document=@/home/runner/log.txt "https://api.telegram.org/bot$TOKEN/sendDocument" \
+        -F chat_id=$CID\
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html"
 cp out/arch/arm64/boot/Image.gz-dtb ../anykernel3-spectrum
 cd ../anykernel3-spectrum
-# zip -r9 ${ZIPNAME}.zip * -x build.sh
+zip -r9 ${ZIPNAME}.zip * -x build.sh
 
 md5sum ${ZIPNAME}.zip
+curl -F document=@$ZIPNAME.zip "https://api.telegram.org/bot$TOKEN/sendDocument" \
+        -F chat_id=$CID\
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html"
