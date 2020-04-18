@@ -6,12 +6,12 @@ export TZ=Asia/Jakarta
 export TIME=$(date +"%S-%F")
 export ZIPNAME=GoGreen-Leaf-${TIME}
 ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-dpkg-reconfigure --frontend noninteractive tzdata
+sudo dpkg-reconfigure --frontend noninteractive tzdata
 
-apt-get install -y tzdata
-apt-get update -qq && \
-    apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y \
+sudo apt-get install -y tzdata
+sudo apt-get update -qq && \
+    sudo apt-get upgrade -y && \
+    sudo apt-get install --no-install-recommends -y \
 	autoconf \
 	autogen \
 	automake \
