@@ -71,7 +71,7 @@ sudo apt-get update -qq && \
 
 git clone https://github.com/areyoudeveloper/android_kernel_xiaomi_msm8917.git --depth 1
 git clone https://github.com/areyoudeveloper/anykernel3-spectrum
-git clone https://github.com/najahiiii/aarch64-linux-gnu.git -b gcc8-201903-A
+git clone git clone https://github.com/najahiiii/aarch64-linux-gnu.git -b linaro8-20190402
 
 echo bulding!!
 
