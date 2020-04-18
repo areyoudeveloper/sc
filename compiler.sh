@@ -84,7 +84,7 @@ export CROSS_COMPILE=/home/runner/work/gcc-prebuilts/bin/aarch64-linux-gnu-
 make mrproper
 mkdir -p out
 make O=out rolex_defconfig
-make O=out -j$(nproc --all) -l$(nproc --all) | tee log.txt
+make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/work/android_kernel_xiaomi_msm8917/log.txt
 
 cp out/arch/arm64/boot/Image.gz-dtb anyKernel3-spectrum
 cd anyKernel3-spectrum
