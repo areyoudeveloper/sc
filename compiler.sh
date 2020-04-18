@@ -71,23 +71,23 @@ sudo apt-get update -qq && \
 	zstd
 
 git clone https://github.com/areyoudeveloper/android_kernel_xiaomi_msm8917.git --depth 1
-git clone https://github.com/areyoudeveloper/anykernel3-spectrum.git 
-git clone https://github.com/TeamInfinity/gcc-prebuilts
+git clone https://github.com/areyoudeveloper/anykernel3-spectrum
+git clone https://github.com/najahiiii/aarch64-linux-gnu.git -b gcc8-201903-A
 
 echo bulding!!
 
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER=TEA
-export CROSS_COMPILE=/home/runner/work/gcc-prebuilts/bin/aarch64-linux-gnu-
-
+export CROSS_COMPILE=/home/runner/work/sssh/sssh/aarch64-linux-gnu/bin/aarch64-linux-gnu-
+cd android_kernel_xiaomi_msm8917
 make mrproper
 mkdir -p out
 make O=out rolex_defconfig
-make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/work/android_kernel_xiaomi_msm8917/log.txt
+make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/log.txt
 
-cp out/arch/arm64/boot/Image.gz-dtb anyKernel3-spectrum
-cd anyKernel3-spectrum
+cp out/arch/arm64/boot/Image.gz-dtb ../anyKernel3-spectrum
+cd ../anyKernel3-spectrum
 zip -r9 ${ZIPNAME}.zip * -x build.sh
 
 md5sum ${ZIPNAME}.zip
