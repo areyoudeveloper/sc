@@ -87,6 +87,6 @@ make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/log.txt
 
 cp out/arch/arm64/boot/Image.gz-dtb ../anykernel3-spectrum
 cd ../anykernel3-spectrum
-zip -r9 ${ZIPNAME}.zip * -x build.sh
+# zip -r9 ${ZIPNAME}.zip * -x build.sh
 
 md5sum ${ZIPNAME}.zip
