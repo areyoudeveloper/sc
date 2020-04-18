@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
 export TIME=$(date +"%S-%F")
 export ZIPNAME=GoGreen-Leaf-${TIME}
-ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+sudo ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 sudo apt-get install -y tzdata
@@ -86,8 +86,8 @@ mkdir -p out
 make O=out rolex_defconfig
 make O=out -j$(nproc --all) -l$(nproc --all) | tee /home/runner/log.txt
 
-cp out/arch/arm64/boot/Image.gz-dtb ../anyKernel3-spectrum
-cd ../anyKernel3-spectrum
+cp out/arch/arm64/boot/Image.gz-dtb ../anykernel3-spectrum
+cd ../anykernel3-spectrum
 zip -r9 ${ZIPNAME}.zip * -x build.sh
 
 md5sum ${ZIPNAME}.zip
