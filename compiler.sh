@@ -3,8 +3,7 @@
 export PATH=$PATH:~/bin/:/usr/bin
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
-export TIME=$(date +"%S-%F")
-export ZIPNAME=GoGreen-Leaf-${TIME}
+export ZIPNAME=GoGreen-Leaf
 sudo ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
