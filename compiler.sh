@@ -1,7 +1,5 @@
 
 #! /usr/bin/env bash
-export TOKEN=1009942201:AAHaj2rXDNSFyP2RlUk1BWkx2EF93cWNLBs
-export CID=-361290223
 export PATH=$PATH:~/bin/:/usr/bin
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
