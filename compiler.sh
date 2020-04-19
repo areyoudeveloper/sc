@@ -1,5 +1,7 @@
 
 #! /usr/bin/env bash
+export TOKEN=$TOKEN
+export CID=$CID
 export PATH=$PATH:~/bin/:/usr/bin
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Jakarta
